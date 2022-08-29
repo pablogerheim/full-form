@@ -1,0 +1,37 @@
+.textForm {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+}
+
+.stripe {
+  left: 0px;
+  top: 0px;
+  background: #f5f5f5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.textSubTitle {
+  font-family: "Inria Serif";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+
+}
+
+.font{
+  font-family: "Inria Serif";
+}
+
+.divSubTitle{
+   box-shadow: 0px 2px 0px rgba(0, 0, 0, 1);
+}
+
+@media screen and (min-width: 800px) {
+}
+
+@media screen and (min-width: 1100px) {
+}
