@@ -23,9 +23,9 @@ function Form() {
     function handleEperiency() {
       if (!experiency) {return}
       return experiency.map((ex, i) => (
-        <div className=" border-solid border-l-2 border-green-200 h-[130px] ">
+        <div key={`${i} n° of key`} className=" border-solid border-l-2 border-green-200 h-[130px] ">
           <p className=" relative top-[-14px] left-[-4px] text-green-900">•</p>
-          <div key={i + "experiency"} className=" ml-3 relative top-[-28px] ">
+          <div className=" ml-3 relative top-[-28px] ">
             <p className="font text-lg">{ex.company}</p>
             <p className="opacity-75">
               {ex.job} • {ex.from} - {ex.to}
@@ -68,9 +68,9 @@ function Form() {
         <div>
           <div className="divSubTitle flex justify-between ">
             <h2 className="textSubTitle ">My Skills</h2>
-            <button>
+           
               <DialogSkill addAbility={addAbility} />
-            </button>
+           
           </div>
           <div className="grid grid-cols-4 gap-4">{handleSkills()}</div>
         </div>
@@ -79,12 +79,11 @@ function Form() {
           <h2 className="textSubTitle ">My Experiency</h2>
         </div>
         <div className="flex flex-row-reverse">
-          <button>
+          
             <DialogExperience
               experiency={experiency}
               setExperiency={setExperiency}
             />
-          </button>
         </div>
         <div>{handleEperiency()}</div>
       </section>

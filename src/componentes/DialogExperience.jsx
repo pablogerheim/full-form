@@ -28,7 +28,8 @@ export default function DialogExperience({ experiency, setExperiency }) {
     if (current === null) {
       workTo();
     }
-  });
+    hendleError()
+  }, [company, job, from, to, current]);
 
   function workTo() {
     if (experiency[0].to === "Present") {
@@ -96,47 +97,52 @@ export default function DialogExperience({ experiency, setExperiency }) {
     setOpen(false);
   };
 
-  function hendleError() {
-    company === "" ? setCompanyErro(true) : setCompanyErro(false);
-    job === "" ? setJobErro(true) : setJobErro(false);
-    from === "" ? setFromErro(true) : setFromErro(false);
-
+  function handleToHelper() {
     let toHelper = current === false ? to : "Present";
 
-    if (toHelper === "mm/yyyy" || toHelper !== "") {
+    if (toHelper === "mm/yyyy" || toHelper === "") {
       setToErro(true);
     } else {
       setToErro(false);
     }
-
     return toHelper
   }
 
-  const handleUpdateClose = (event) => {
-    event.preventDefault();
-  let toHelper = hendleError();
-    if (
-      companyErro === false ||
-      jobErro === false ||
-      fromErro === false ||
-      toErro === false
-    ) {
-      setExperiency([
-        {
-          company,
-          job,
-          from,
-          to: toHelper,
-          skill,
-        },
-      ]);
-      setOpen(false);
-    }
-  };
+  function hendleError() {
+    company === "" ? setCompanyErro(true) : setCompanyErro(false);
+    job === "" ? setJobErro(true) : setJobErro(false);
+    from === "" ? setFromErro(true) : setFromErro(false);
+    handleToHelper()
+  }
 
   const handleCheked = () => {
     setCurrent(!current);
     setTo("mm/yyyy");
+  };
+
+  function handleSand() {
+    let toHelper = handleToHelper()
+    setExperiency([{
+      company,
+      job,
+      from,
+      to: toHelper,
+      skill,
+    }]);
+  }
+
+  const handleUpdateClose = (event) => {
+    event.preventDefault();
+    hendleError();
+    if (
+      company !== "" &&
+      job !== "" &&
+      from !== "" &&
+      toErro === false
+    ) {
+      handleSand()
+      setOpen(false);
+    }
   };
 
   return (
@@ -159,12 +165,13 @@ export default function DialogExperience({ experiency, setExperiency }) {
           <p className="mt-2 mr-20 opacity-75 text-sm">
             All fields with * are required
           </p>
-          <form className="p-1 ">
+          <form
+            className="p-1 ">
             <div className="flex mr-20 ">
               <label className="flex flex-col mt-2 mr-2 text-xs w-1/2">
                 Company Name*
                 <input
-                  required
+                  required={true}
                   className={
                     companyErro
                       ? "border-solid border border-red-600 p-1"
@@ -173,7 +180,7 @@ export default function DialogExperience({ experiency, setExperiency }) {
                   value={company}
                   onChange={(e) => {
                     setCompany(e.target.value);
-                    hendleError();
+
                   }}
                 />
                 {companyErro && (
@@ -195,7 +202,7 @@ export default function DialogExperience({ experiency, setExperiency }) {
                   value={job}
                   onChange={(e) => {
                     setJob(e.target.value);
-                    hendleError();
+                    job === "" ? setJobErro(true) : setJobErro(false);
                   }}
                 />
                 {jobErro && (
@@ -220,7 +227,7 @@ export default function DialogExperience({ experiency, setExperiency }) {
                   type="data"
                   onChange={(e) => {
                     setFrom(e.target.value);
-                    hendleError();
+                    from === "" ? setFromErro(true) : setFromErro(false);
                   }}
                 />
                 {fromErro && (
@@ -240,7 +247,7 @@ export default function DialogExperience({ experiency, setExperiency }) {
                   disabled={current}
                   onChange={(e) => {
                     setTo(e.target.value);
-                    hendleError();
+                    handleToHelper()
                   }}
                 />
                 {toErro && (
@@ -255,7 +262,7 @@ export default function DialogExperience({ experiency, setExperiency }) {
                   type="checkbox"
                   className="p-1 relative top-[2px] flex"
                   checked={current}
-                  onClick={handleCheked}
+                  onChange={handleCheked}
                 />
                 <p className="pl-1 text-xs"> I currente work were</p>
               </label>
@@ -271,26 +278,25 @@ export default function DialogExperience({ experiency, setExperiency }) {
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className={`w-full ${
-                  search ? "mt-4" : "mt-0"
-                }  p-1 border-solid border`}
+                className={`w-full ${search ? "mt-4" : "mt-0"
+                  }  p-1 border-solid border`}
                 placeholder="     Search for Skill"
               />
             </div>
-        <div className="flex justify-between">
-          <button
-            onClick={handleClose}
-            className="rounded-full m-6 text-[#28783a] font-bold text-sm"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleUpdateClose}
-            className="rounded-full bg-[#56C870] px-3 py-2 m-6 font-bold text-sm"
-          >
-            Updade
-          </button>
-        </div>
+            <div className="flex justify-between">
+              <button
+                onClick={handleClose}
+                className="rounded-full m-6 text-[#28783a] font-bold text-sm"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleUpdateClose}
+                className="rounded-full bg-[#56C870] px-3 py-2 m-6 font-bold text-sm"
+              >
+                Updade
+              </button>
+            </div>
           </form>
         </DialogContent>
       </Dialog>

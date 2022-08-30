@@ -8,38 +8,43 @@ import { AiOutlinePlus, AiFillExclamationCircle } from "react-icons/ai";
 
 export default function DialogSkill({ addAbility }) {
   const [open, setOpen] = useState(false);
-  const [ability, setAbility] = useState("");
-  const [age, setAge] = useState("");
+  const [ability, setAbility] = useState(1);
+  const [age, setAge] = useState(1);
   const [skillErro, setSkillErro] = useState(false);
   const [yearErro, setYearErro] = useState(false);
 
+
   const handleChangeAge = (event) => {
     setAge(event.target.value);
+    setYearErro(false)
   };
   const handleChangeAbility = (event) => {
     setAbility(event.target.value);
+    setSkillErro(false)
   };
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
 
+  function handleErros() {
+    ability === 1 ? setSkillErro(true) : setSkillErro(false);
+    age === 1 ? setYearErro(true) : setYearErro(false);
+  }
+
+  function handleSand() {
+    addAbility(ability, age);
+    setAbility(1);
+    setAge(1);
+  }
+
   const handleAddClose = (event) => {
     event.preventDefault();
-    ability === "" ? setSkillErro(true) : setSkillErro(false);
-    age === "" ? setYearErro(true) : setYearErro(false);
-    if (
-      yearErro === false ||
-      skillErro === false ||
-      ability !== "" ||
-      age !== ""
-    ) {
-      addAbility(ability, age);
-      setAbility("");
-      setAge("");
+    handleErros()
+    if (ability !== 1 && age !== 1) {
+      handleSand()
     }
   };
 
@@ -59,7 +64,8 @@ export default function DialogSkill({ addAbility }) {
           <p className="mt-2 mr-20 opacity-75 text-sm">
             All fields with * are required
           </p>
-          <form className="p-1 ">
+          <form
+            className="p-1">
             <label className="flex flex-col mt-4 text-xs">
               Skills*
               <select
@@ -68,28 +74,26 @@ export default function DialogSkill({ addAbility }) {
                     ? "border-solid border border-red-600 p-1"
                     : "border-solid border p-1"
                 }
-                required
                 value={ability}
                 onChange={handleChangeAbility}
               >
-                <option value="" disabled selected>
+                <option value={1} disabled  >
                   Select your option
                 </option>
-                {skill.map((s) => (
-                  <option value={s}>{s}</option>
+                {skill.map((s, i) => (
+                  <option key={i + s} value={s}>{s}</option>
                 ))}
               </select>
               {skillErro && (
                 <p className="text-red-600 text-xs flex">
                   <AiFillExclamationCircle className="relative top-[2px]" /> Add
-                  your skill{" "}
+                  your skill
                 </p>
               )}
             </label>
             <label className="flex flex-col mt-4 text-xs">
               Years of experience*
               <select
-                required
                 className={
                   yearErro
                     ? "border-solid border border-red-600 p-1"
@@ -98,17 +102,17 @@ export default function DialogSkill({ addAbility }) {
                 value={age}
                 onChange={handleChangeAge}
               >
-                <option value="" disabled selected>
+                <option value={1} disabled  >
                   Select your option
                 </option>
-                {years.map((y) => (
-                  <option value={y}>{y}</option>
+                {years.map((y, i) => (
+                  <option key={i + y} value={y}>{y}</option>
                 ))}
               </select>
               {yearErro && (
                 <p className="text-red-600 text-xs flex">
                   <AiFillExclamationCircle className="relative top-[2px]" /> Add
-                  your year of experience{" "}
+                  your year of experience
                 </p>
               )}
             </label>
