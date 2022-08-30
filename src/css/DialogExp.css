@@ -1,0 +1,10 @@
+@media screen and (max-width: 520px) {
+    .screenDialog{
+      flex-direction: column;
+      margin: 5px;
+      align-items: first baseline;
+    }
+    .noMarg{
+      margin:5px 0px  
+    }
+  }

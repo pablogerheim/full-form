@@ -7,8 +7,6 @@
 }
 
 .stripe {
-  left: 0px;
-  top: 0px;
   background: #f5f5f5;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -19,7 +17,6 @@
   font-weight: 700;
   font-size: 32px;
   line-height: 38px;
-
 }
 
 .font{
@@ -30,8 +27,18 @@
    box-shadow: 0px 2px 0px rgba(0, 0, 0, 1);
 }
 
-@media screen and (min-width: 800px) {
+.screen{
+  padding: 13rem;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (max-width: 900px) {
+  .screen{
+    padding:5rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .screen{
+    padding:3rem;
+  }
 }

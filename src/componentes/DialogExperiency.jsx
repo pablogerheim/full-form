@@ -9,8 +9,9 @@ import {
 } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
 import { allSkill } from "../data/data";
+import "../css/DialogExp.css"
 
-export default function DialogExperience({ experiency, setExperiency }) {
+export default function DialogExperiency({ experiency, setExperiency }) {
   const [open, setOpen] = useState(false);
   const [company, setCompany] = useState(experiency[0].company);
   const [job, setJob] = useState(experiency[0].job);
@@ -29,6 +30,7 @@ export default function DialogExperience({ experiency, setExperiency }) {
       workTo();
     }
     hendleError()
+    // eslint-disable-next-line
   }, [company, job, from, to, current]);
 
   function workTo() {
@@ -146,7 +148,7 @@ export default function DialogExperience({ experiency, setExperiency }) {
   };
 
   return (
-    <div>
+    <div >
       <button
         className="flex items-center z-20 mt-2 py-1 px-2 border-solid border-black border-[1px] rounded-2xl bg-[#D9D9D9]"
         onClick={handleClickOpen}
@@ -167,7 +169,7 @@ export default function DialogExperience({ experiency, setExperiency }) {
           </p>
           <form
             className="p-1 ">
-            <div className="flex mr-20 ">
+            <div className=" screenDialog flex mr-20 ">
               <label className="flex flex-col mt-2 mr-2 text-xs w-1/2">
                 Company Name*
                 <input
@@ -213,7 +215,7 @@ export default function DialogExperience({ experiency, setExperiency }) {
                 )}
               </label>
             </div>
-            <div className="flex items-center mr-20  ">
+            <div className="screenDialog flex items-center mr-20 ">
               <label className="flex flex-col mr-2 text-xs w-[23%]">
                 From*
                 <input
@@ -237,7 +239,7 @@ export default function DialogExperience({ experiency, setExperiency }) {
                   </p>
                 )}
               </label>
-              <label className="flex flex-col mx-2 text-xs w-[23%]">
+              <label className="noMarg flex flex-col mx-2 text-xs w-[23%]">
                 To*
                 <input
                   required={toErro}
@@ -269,7 +271,7 @@ export default function DialogExperience({ experiency, setExperiency }) {
             </div>
             <div>
               <h2 className="mt-4 text-sm font-bold">Choose the skills used</h2>
-              <div className="flex">{printSkills()}</div>
+              <div className="screenDialog flex">{printSkills()}</div>
             </div>
             {!search && (
               <AiOutlineSearch className="relative top-[25px] left-1 z-10 opacity-70" />
