@@ -1,8 +1,12 @@
 # Full Form
 
-Formulario de recrutamento, cadastro de experiencia proficional e habilidades
+Formulário de recrutamento, cadastro de experiencia profissional e habilidades
 
-![Ilustrando]()
+## Ilustrações
+
+![Screenshot](https://user-images.githubusercontent.com/90703690/187340180-86d87249-275e-4e0c-a4d5-8fceb34e6ffe.png)
+![Screenshot](https://user-images.githubusercontent.com/90703690/187340321-061cd1eb-7d94-460d-aca4-9deff71cb64e.png)
+![Screenshot](https://user-images.githubusercontent.com/90703690/187340394-b9d5f339-8536-461d-8d68-08bcb8176010.png)
 
 ## 🚧 Em Desenvolvimento
 
