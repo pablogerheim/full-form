@@ -2,6 +2,8 @@
 
 Formulário de recrutamento, cadastro de experiencia profissional e habilidades
 
+## Link Vercel: https://loja-puce.vercel.app/
+
 ## Ilustrações
 
 ![Screenshot](https://user-images.githubusercontent.com/90703690/187340180-86d87249-275e-4e0c-a4d5-8fceb34e6ffe.png)
@@ -16,7 +18,6 @@ Back-end
 
 Terminal:
 
-- `Cd front`
 - `Npm i`
 - `Npm start`
 
@@ -31,3 +32,4 @@ Front
 * [Tailwind](https://tailwindcss.com/) - Estilização
 * [Material UI](https://mui.com/pt/) - Estilização
 * [GitHub](https://github.com/) - Software
+* [Vercel](https://vercel.com) - Hospedagem
