@@ -1,6 +1,5 @@
+import React from 'react';
 import { useState, useEffect } from "react";
-import Dialog from "@material-ui/core/Dialog";
-import DialogContent from "@material-ui/core/DialogContent";
 import { BsX } from "react-icons/bs";
 import {
   AiOutlineCheck,
@@ -11,7 +10,7 @@ import { MdEdit } from "react-icons/md";
 import { allSkill } from "../data/data";
 import "../css/DialogExp.css"
 
-export default function DialogExperiency({ experiency, setExperiency }) {
+export default function DialogExperiency({ experiency, setExperiency, satAble }) {
   const [open, setOpen] = useState(false);
   const [company, setCompany] = useState(experiency[0].company);
   const [job, setJob] = useState(experiency[0].job);
@@ -30,7 +29,6 @@ export default function DialogExperiency({ experiency, setExperiency }) {
       workTo();
     }
     hendleError()
-    // eslint-disable-next-line
   }, [company, job, from, to, current]);
 
   function workTo() {
@@ -93,10 +91,12 @@ export default function DialogExperiency({ experiency, setExperiency }) {
 
   const handleClickOpen = () => {
     setOpen(true);
+    satAble(false)
   };
 
   const handleClose = () => {
     setOpen(false);
+    satAble(true)
   };
 
   function handleToHelper() {
@@ -148,7 +148,7 @@ export default function DialogExperiency({ experiency, setExperiency }) {
   };
 
   return (
-    <div >
+    <>
       <button
         className="flex items-center z-20 mt-2 py-1 px-2 border-solid border-black border-[1px] rounded-2xl bg-[#D9D9D9]"
         onClick={handleClickOpen}
@@ -156,8 +156,8 @@ export default function DialogExperiency({ experiency, setExperiency }) {
         <MdEdit />
         <p className="ml-1">Edit</p>
       </button>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogContent>
+      <div className={open ? `dialogStyles` : "none"}>
+        <div className=''>
           <div className="flex justify-between">
             <h1> Edit Experiency </h1>
             <button onClick={handleClose}>
@@ -187,8 +187,8 @@ export default function DialogExperiency({ experiency, setExperiency }) {
                 />
                 {companyErro && (
                   <p className="text-red-600 text-xs flex">
-                    <AiFillExclamationCircle className="relative top-[2px]" />{" "}
-                    This field is required{" "}
+                    <AiFillExclamationCircle className="relative top-[2px]" />
+                    This field is required
                   </p>
                 )}
               </label>
@@ -209,8 +209,8 @@ export default function DialogExperiency({ experiency, setExperiency }) {
                 />
                 {jobErro && (
                   <p className="text-red-600 text-xs flex">
-                    <AiFillExclamationCircle className="relative top-[2px]" />{" "}
-                    This field is required{" "}
+                    <AiFillExclamationCircle className="relative top-[2px]" />
+                    This field is required
                   </p>
                 )}
               </label>
@@ -234,8 +234,8 @@ export default function DialogExperiency({ experiency, setExperiency }) {
                 />
                 {fromErro && (
                   <p className="text-red-600 text-xs flex">
-                    <AiFillExclamationCircle className="relative top-[2px]" />{" "}
-                    Required{" "}
+                    <AiFillExclamationCircle className="relative top-[2px]" />
+                    Required
                   </p>
                 )}
               </label>
@@ -254,8 +254,8 @@ export default function DialogExperiency({ experiency, setExperiency }) {
                 />
                 {toErro && (
                   <p className="text-red-600 text-xs flex">
-                    <AiFillExclamationCircle className="relative top-[2px]" />{" "}
-                    Required{" "}
+                    <AiFillExclamationCircle className="relative top-[2px]" />
+                    Required
                   </p>
                 )}
               </label>
@@ -300,8 +300,8 @@ export default function DialogExperiency({ experiency, setExperiency }) {
               </button>
             </div>
           </form>
-        </DialogContent>
-      </Dialog>
-    </div>
+        </div>
+      </div>
+    </>
   );
 }

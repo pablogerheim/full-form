@@ -1,44 +1,58 @@
 .textForm {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 39px;
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 39px;
+}
+
+.screenoff {
+	padding: 13rem;
+	position: absolute;
+	top: 100%;
+  overflow-block: hidden;
+}
+
+.logooff{
+  position: absolute;
+	top: 100%;
+  overflow-block: hidden;
 }
 
 .stripe {
-  background: #f5f5f5;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 70px;
+	background: #f5f5f5;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .textSubTitle {
-  font-family: "Inria Serif";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 38px;
+	font-family: "Inria Serif";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 38px;
 }
 
-.font{
-  font-family: "Inria Serif";
+.font {
+	font-family: "Inria Serif";
 }
 
-.divSubTitle{
-   box-shadow: 0px 2px 0px rgba(0, 0, 0, 1);
+.divSubTitle {
+	box-shadow: 0px 2px 0px rgba(0, 0, 0, 1);
 }
 
-.screen{
-  padding: 13rem;
+.screen {
+	padding: 13rem;
 }
 
 @media screen and (max-width: 900px) {
-  .screen{
-    padding:5rem;
-  }
+	.screen {
+		padding: 5rem;
+	}
 }
 
 @media screen and (max-width: 400px) {
-  .screen{
-    padding:3rem;
-  }
+	.screen {
+		padding: 3rem;
+	}
 }

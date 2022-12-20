@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import React from 'react';
+import { useState } from "react";
 import { BsX } from "react-icons/bs";
 import "../css/Form.css";
 import { dataSkill, dataExperiency } from "../data/data";
@@ -8,12 +9,11 @@ import DialogExperiency from "../componentes/DialogExperiency";
 function Form() {
   const [skills, setSkills] = useState(dataSkill);
   const [experiency, setExperiency] = useState(dataExperiency);
+  const [able, satAble] = useState(true)
 
   function addAbility(ability, age) {
     setSkills([...skills, { skill: ability, year: age }]);
   }
-
-  useEffect(() => { });
 
   function exclude(skill) {
     let helper = skills.filter(s => s.skill !== skill)
@@ -60,14 +60,17 @@ function Form() {
 
   return (
     <>
-      <header className="stripe flex flex-col justify-center w-full">
+      <header className={`stripe flex flex-col justify-center w-full ${able || "logooff"}`}>
         <h1 className="textFrom pl-[35px] text-[32px] font-[500]">Full Form</h1>
       </header>
-      <main className=" screen ">
+      <main className={`screen ${able || "screenoff"}`}>
         <section>
           <div className="divSubTitle flex justify-between ">
             <h2 className="textSubTitle ">My Skills</h2>
-            <DialogSkill addAbility={addAbility} />
+            <DialogSkill
+              addAbility={addAbility}
+              satAble={satAble}
+            />
           </div>
           <div className="flex flex-wrap gap-4">{handleSkills()}</div>
         </section>
@@ -79,6 +82,7 @@ function Form() {
             <DialogExperiency
               experiency={experiency}
               setExperiency={setExperiency}
+              satAble={satAble}
             />
           </div>
           <div>{handleEperiency()}</div>
