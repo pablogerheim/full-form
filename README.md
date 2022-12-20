@@ -30,6 +30,5 @@ Node.js - https://nodejs.org/en/
 Front
 * [React](https://pt-br.reactjs.org/) - Framework 
 * [Tailwind](https://tailwindcss.com/) - Estilização
-* [Material UI](https://mui.com/pt/) - Estilização
 * [GitHub](https://github.com/) - Software
 * [Vercel](https://vercel.com) - Hospedagem
